@@ -1,2 +1,3 @@
-# python-learning
-python learning tasks
+# Задачки по изучению python
+
+сверчат сверчки

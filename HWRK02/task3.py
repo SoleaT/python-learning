@@ -2,4 +2,4 @@
 
 lst = {i: round((1 + (1 / i)) ** i, 2) for i in range(1, int(input('Введите цифру: ')) + 1)}
 print('Значения:',lst)
-print('Сумма:',sum(lst.values()))
+print('Сумма значений:',sum(lst.values()))

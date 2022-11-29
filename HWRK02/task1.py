@@ -11,11 +11,10 @@ for i in s:
 print('Сумма цифр:', sm)
 
 # Способ2.
-
 num = float(input('Введите число: '))
 while round(num) != num:
     num *= 10
-sm=0
+sm = 0
 while num > 0:
     sm += num % 10
     num //= 10

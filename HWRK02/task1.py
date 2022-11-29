@@ -12,10 +12,11 @@ print('Сумма цифр:', sm)
 
 # Способ2.
 
-s = [int(i) for i in input('Введите число: ').split('.')]
-sm = 0
-for num in s:
-    while num > 0:
-        sm += num % 10
-        num //= 10
-print('Сумма цифр:', sm)
+num = float(input('Введите число: '))
+while round(num) != num:
+    num *= 10
+sm=0
+while num > 0:
+    sm += num % 10
+    num //= 10
+print('Сумма цифр:', round(sm))

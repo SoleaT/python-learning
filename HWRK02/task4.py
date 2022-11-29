@@ -7,10 +7,10 @@ num = int(input('Введите число: '))
 nums = list(range(-num, num + 1))
 print('Полученный список:', nums)
 
-openedfile = open(path, 'r')
-data = [int(line.strip()) for line in openedfile]
+with open(path, 'r') as openedfile:
+    data = [int(line.strip()) for line in openedfile]
 
-if max(data)>len(nums):
+if max(data) > len(nums):
     print('Максимальный индекс из файла больше, чем к-во значений в списке')
     exit()
 

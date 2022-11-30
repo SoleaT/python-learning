@@ -15,5 +15,5 @@ while True:
             functions.task3(int(input('Какое число перевести в двоичное? ')))
         elif num == 4:
             lst_fib = [1, 0, 1]                                                              #начальное значение списка
-            print(functions.task4(lst_fib,int(input('Сколько чисел Нефигабоначчи вывести? '))))
+            print(functions.task4(lst_fib, int(input('Сколько чисел Нефигабоначчи вывести? '))))
 

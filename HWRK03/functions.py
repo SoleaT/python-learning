@@ -2,11 +2,12 @@ from random import randint, random
 
 
 def task1(sze=5):
-    lst = [randint(1, 10+1) for _ in range(sze)]                 #формируем список из рандомных значений от 1 до 10
-    newlst = []
-    for i in range(sze // 2 if sze % 2 == 0 else sze // 2 + 1):  #к-во итераций цикла зависит от чётности размера списка
-        newlst.append(lst[i] * lst[sze - i - 1])                 #формируем новый список
-    print(lst, '->', newlst)
+    lst = [randint(1, 10 + 1) for _ in range(sze)]  # формируем список из рандомных значений от 1 до 10
+    new_lst = []
+    for i in range(
+            sze // 2 if sze % 2 == 0 else sze // 2 + 1):  # к-во итераций цикла зависит от чётности размера списка
+        new_lst.append(lst[i] * lst[sze - i - 1])  # формируем новый список
+    print(lst, '->', new_lst)
 
 
 def task2(sze=5):

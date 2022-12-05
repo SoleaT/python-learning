@@ -25,10 +25,7 @@ def lets_play_bot(cur_sweets_num):  # бот ходит первый
         print(f'Выиграл бот, т.к. осталось {cur_sweets_num} конфет')
         return
     print(f'У нас есть {cur_sweets_num} конфет. Брать можно от 1 до 28 конфеты.')
-    # if cur_sweets_num == num_sweets:  # выигрышная стратегия пыщ
-    #     player1 = num_sweets % (max_sweets + 1)
-    # else:
-    if cur_sweets_num <= max_sweets * 2:  # из-за нее на последнем ходу у бота будет выбор: выиграть или выиграть
+    if cur_sweets_num <= max_sweets * 2:  # на последнем ходу у бота будет выбор: выиграть или выиграть
         player1 = cur_sweets_num - max_sweets - 1
     else:
         player1 = randint(1, max_sweets + 1)  # а это просто ходы

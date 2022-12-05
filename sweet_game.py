@@ -1,7 +1,7 @@
 from random import randint
 
 # количество конфет
-num_sweets = 2021
+num_sweets = 205
 # можно взять конфет максимально:
 max_sweets = 28
 
@@ -21,17 +21,17 @@ def player_take(num):  # проверка ввода игроком
 
 
 def lets_play_bot(cur_sweets_num):  # бот ходит первый
-    if 0 < cur_sweets_num < max_sweets:
+    if 0 < cur_sweets_num <= max_sweets:
         print(f'Выиграл бот, т.к. осталось {cur_sweets_num} конфет')
         return
     print(f'У нас есть {cur_sweets_num} конфет. Брать можно от 1 до 28 конфеты.')
-    if cur_sweets_num == num_sweets:  # выигрышная стратегия пыщ
-        player1 = num_sweets % (max_sweets + 1)
+    # if cur_sweets_num == num_sweets:  # выигрышная стратегия пыщ
+    #     player1 = num_sweets % (max_sweets + 1)
+    # else:
+    if cur_sweets_num <= max_sweets * 2:  # из-за нее на последнем ходу у бота будет выбор: выиграть или выиграть
+        player1 = cur_sweets_num - max_sweets - 1
     else:
-        if cur_sweets_num <= max_sweets * 2:  # из-за нее на последнем ходу у бота будет выбор: выиграть или выиграть
-            player1 = cur_sweets_num - max_sweets - 1
-        else:
-            player1 = randint(1, max_sweets + 1)  # а это просто ходы
+        player1 = randint(1, max_sweets + 1)  # а это просто ходы
     print(f'Бот взял {player1} конфет.')
     if 0 < cur_sweets_num - player1 <= max_sweets:
         print(f'Выиграл игрок, т.к. осталось {cur_sweets_num - player1} конфет')
@@ -42,7 +42,7 @@ def lets_play_bot(cur_sweets_num):  # бот ходит первый
 
 
 def lets_play_bot2(cur_sweets_num):  # бот ходит второй, так что выигрышную стратегию не применить
-    if 0 < cur_sweets_num < max_sweets:
+    if 0 < cur_sweets_num <= max_sweets:
         print(f'Выиграл игрок, т.к. осталось {cur_sweets_num} конфет')
         return
     print(f'У нас есть {cur_sweets_num} конфет. Брать можно от 1 до 28 конфеты.')
@@ -63,13 +63,13 @@ def lets_play_bot2(cur_sweets_num):  # бот ходит второй, так ч
 
 
 def lets_play(cur_sweets_num):  # бойня игроков
-    if 0 < cur_sweets_num < max_sweets:
+    if 0 < cur_sweets_num <= max_sweets:
         print(f'Выиграл первый, т.к. осталось {cur_sweets_num} конфет')
         return
     print(f'У нас есть {cur_sweets_num} конфет. Брать можно от 1 до 28 конфеты.')
     player1 = player_take(input('Ходи, первый игрок. Сколько берёшь? '))
     cur_sweets_num -= player1
-    if 0 < cur_sweets_num < max_sweets:
+    if 0 < cur_sweets_num <= max_sweets:
         print(f'Выиграл второй, т.к. осталось {cur_sweets_num} конфет')
         return
     else:

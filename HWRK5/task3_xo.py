@@ -49,7 +49,6 @@ def bot_logic():
     else:
         corners = [1, 3, 7, 9]
         shuffle(corners)
-        print(turns, def_symbol)
         for line in win_rules:
             if turns[line[0]] == turns[line[1]] == def_symbol and turns[line[2]].isdigit():
                 return line[2]
@@ -57,6 +56,7 @@ def bot_logic():
                 return line[1]
             if turns[line[1]] == turns[line[2]] == def_symbol and turns[line[0]].isdigit():
                 return line[0]
+        for line in win_rules:
             if turns[line[0]] == turns[line[1]] == get_opp_symbol() and turns[line[2]].isdigit():
                 return line[2]
             if turns[line[0]] == turns[line[2]] == get_opp_symbol() and turns[line[1]].isdigit():

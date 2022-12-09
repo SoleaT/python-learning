@@ -1,7 +1,7 @@
 from random import randint
 
 # количество конфет
-num_sweets = 205
+num_sweets = 2021
 # можно взять конфет максимально:
 max_sweets = 28
 

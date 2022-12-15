@@ -31,16 +31,8 @@ def rem_parenthesis(expr_parsed):
     return expr_parsed
 
 
-def find_oper(oper_char: str, arr):
-    while oper_char in arr:
-        idx = arr.index(oper_char)
-        arr = [*arr[:idx - 1], oper(*arr[idx - 1:idx + 2]), *arr[idx + 2:]]
-
-
 def evaluate(expr_parsed):
     expr_parsed = rem_parenthesis(expr_parsed)
-
-    i = 0
 
     while len(expr_parsed) > 1:
         if '*' in expr_parsed or '/' in expr_parsed:
@@ -61,25 +53,4 @@ def evaluate(expr_parsed):
                 idx = expr_parsed.index('+') if expr_parsed.index('+') < expr_parsed.index('-') else expr_parsed.index(
                     '-')
             expr_parsed = [*expr_parsed[:idx - 1], oper(*expr_parsed[idx - 1:idx + 2]), *expr_parsed[idx + 2:]]
-    #     if '+' in expr_parsed:
-    #         idx=expr_parsed.index('+')
-    #     else:
-    #         idx=expr_parsed.index('-')
-    #     expr_parsed = [*expr_parsed[:idx - 1], oper(*expr_parsed[idx - 1:idx + 2]), *expr_parsed[idx + 2:]]
-
-    #         while '*' in expr_parsed:
-    #             idx = expr_parsed.index('*')
-    #             expr_parsed = [*expr_parsed[:idx - 1], oper(*expr_parsed[idx - 1:idx + 2]), *expr_parsed[idx + 2:]]
-    #         while '/' in expr_parsed:
-    #             idx = expr_parsed.index('/')
-    #             expr_parsed = [*expr_parsed[:idx - 1], oper(*expr_parsed[idx - 1:idx + 2]), *expr_parsed[idx + 2:]]
-    #
-    #
-    # while '-' in expr_parsed:
-    #     idx = expr_parsed.index('-')
-    #     expr_parsed = [*expr_parsed[:idx - 1], oper(*expr_parsed[idx - 1:idx + 2]), *expr_parsed[idx + 2:]]
-    # while '+' in expr_parsed:
-    #     idx = expr_parsed.index('+')
-    #     expr_parsed = [*expr_parsed[:idx - 1], oper(*expr_parsed[idx - 1:idx + 2]), *expr_parsed[idx + 2:]]
-
     return expr_parsed

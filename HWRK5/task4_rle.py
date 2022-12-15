@@ -19,8 +19,8 @@ result_str += str(i) + temp_str[-1]
 
 with open('task4_code.txt', 'w') as datafile:
     datafile.writelines(result_str)
-# print(original_txt)
-# print(result_str)
+print(original_txt)
+print(result_str)
 
 # часть 2: расшифровка
 with open('task4_code.txt', 'r') as datafile:
@@ -38,4 +38,4 @@ with open('task4_decode.txt', 'w') as datafile:
     datafile.writelines(result_str)
 
 print('Выполнено')
-# print(result_str)
+print(result_str)

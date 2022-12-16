@@ -4,6 +4,8 @@
 
 from re import search
 
+
+# ну такая слабенькая проверка выражения
 def is_expression_ok(expression) -> bool:
     if expression.count('j') != 2:
         return False
@@ -18,15 +20,14 @@ def is_expression_ok(expression) -> bool:
     return True
 
 
-# создать комплексное число из строки. предполагается, что строка имеет вид a+\-bj, числа однозначные
+# создать комплексное число из строки. предполагается, что строка имеет вид +\-a+\-bj, числа целые
 def make_complex(num: str) -> complex:
     neg1 = False
-    j = num.index('j')
     if num[0] == '-':
         neg1 = True
         num = num[1:]
+    j = num.index('j') + 1
     sign_idx = search('[-+*]', num).start()
-    a = num[sign_idx]
     first_num = float(num[:sign_idx]) if not neg1 else -float(num[:sign_idx])
     sec_num = float(num[sign_idx + 1:j - 1]) if num[sign_idx] == '+' else -float(num[sign_idx + 1:j - 1])
     oper = complex(first_num, sec_num)
@@ -55,5 +56,4 @@ def make_operation(x: complex, y: complex, sign: str) -> str:
             res = str(x / y)
     return res.replace('(', '').replace(')', '')
 
-
-print(parse_c_str('-24+31j - 6+3j'))  # debug
+# print(make_operation(*parse_c_str('-2+3j - 6+3j')))  # debug

@@ -20,14 +20,14 @@ def is_expression_ok(expression) -> bool:
     return True
 
 
-# создать комплексное число из строки. предполагается, что строка имеет вид +\-a+\-bj
+# создать комплексное число из строки. предполагается, что строка имеет вид +\-a+\-bj типа '-2+53j'
 def make_complex(num: str) -> complex:
     neg1 = False  # отрицательная ли вещественная часть
     if num[0] == '-':
         neg1 = True
         num = num[1:]
-    j = num.index('j') + 1  # индекс буквы в мнимной части
-    sign_idx = search('[-+*/]', num).start()  # поиск операции
+    j = num.index('j') + 1  # индекс буквы в мнимой части
+    sign_idx = search('[-+]', num).start()  # поиск знака
     first_num = float(num[:sign_idx]) if not neg1 else -float(num[:sign_idx])  # число вещ. части со знаком
     sec_num = float(num[sign_idx + 1:j - 1]) if num[sign_idx] == '+' else -float(num[sign_idx + 1:j - 1])  # и мнимой
     oper = complex(first_num, sec_num)  # преобразование в комплексное число
@@ -56,4 +56,5 @@ def make_operation(x: complex, y: complex, sign: str) -> str:
             res = str(x / y)
     return res.replace('(', '').replace(')', '')
 
-# print(make_operation(*parse_c_str('-2+3j - 6+3j')))  # debug
+
+print(make_operation(*parse_c_str('-2+3j - 6+3j')))  # debug

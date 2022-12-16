@@ -57,4 +57,4 @@ def make_operation(x: complex, y: complex, sign: str) -> str:
     return res.replace('(', '').replace(')', '')
 
 
-print(make_operation(*parse_c_str('-2+3j - 6+3j')))  # debug
+# print(make_operation(*parse_c_str('-2+3j - 6+3j')))  # debug

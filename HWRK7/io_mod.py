@@ -10,7 +10,7 @@ def print_res(mark: str, input_str: str, res: str):
         logging.write_log(f'Ошибка:({mark}) {input_str} = !!!')
     else:
         print(input_str, '=', res)
-        logging.write_log(f'Выполнено({mark}): {input_str} = {res}')
+        logging.write_log(f' Выполнено({mark}): {input_str} = {res}')
 
 
 def print_main():  # общий запуск
@@ -27,11 +27,14 @@ def print_main():  # общий запуск
                         exit()
                 else:
                     break
-            print_res(mark, input_str, complex_unit.make_operation(*complex_unit.parse_c_str(input_str)))
+            print_res(mark,
+                      input_str,
+                      complex_unit.make_operation(*complex_unit.parse_c_str(input_str))
+                      )
 
         case 'r':
             print('Допустимые форматы ввода чисел - a/b a.b')
-            input_str = input('Если используете операцию деления для дробей, отделите её пробелами')
+            input_str = input('Если используете операцию деления для дробей, отделите её пробелами: ')
             # input_str = '2/4+3/4' #debug
             while True:
                 if not fraction_numbers_unit.is_expression_ok(input_str):
@@ -41,7 +44,11 @@ def print_main():  # общий запуск
                         exit()
                 else:
                     break
-            print_res(mark, input_str, fraction_numbers_unit.operation(*fraction_numbers_unit.parse_r_str(input_str)))
+            print_res(
+                mark,
+                input_str,
+                fraction_numbers_unit.operation(*fraction_numbers_unit.parse_r_str(input_str))
+            )
         case 'l':
             logging.view_log()
         case _:

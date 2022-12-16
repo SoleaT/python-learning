@@ -3,6 +3,7 @@
 # есть всего 2 числа и одна операция
 # при ошибке в написании выражения с делением выполняется сразу выход из программы без возврата в main
 
+
 from fractions import Fraction
 from re import split, search
 from logging import write_log
@@ -25,7 +26,6 @@ def make_ratio(num: str):
 
 def parse_r_str(expression: str):
     opers = []
-    sign = ''
     if not {'-', '+', '*'}.isdisjoint(expression):
         expression = expression.replace(' ', '')
         opers = split('[-+*]', expression)  # разделение по рег.выражению

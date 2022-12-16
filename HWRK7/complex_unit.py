@@ -1,8 +1,8 @@
 # обработка выражений с комплексными числами
 # ограничения:
 # есть всего 2 числа и одна операция
-# читаются только однозначные числа
 
+from re import search
 
 def is_expression_ok(expression) -> bool:
     if expression.count('j') != 2:
@@ -20,8 +20,16 @@ def is_expression_ok(expression) -> bool:
 
 # создать комплексное число из строки. предполагается, что строка имеет вид a+\-bj, числа однозначные
 def make_complex(num: str) -> complex:
-    sec_num = float(num[-2]) if num[-3] == '+' else -float(num[-2])
-    oper = complex(float(num[0]), sec_num)
+    neg1 = False
+    j = num.index('j')
+    if num[0] == '-':
+        neg1 = True
+        num = num[1:]
+    sign_idx = search('[-+*]', num).start()
+    a = num[sign_idx]
+    first_num = float(num[:sign_idx]) if not neg1 else -float(num[:sign_idx])
+    sec_num = float(num[sign_idx + 1:j - 1]) if num[sign_idx] == '+' else -float(num[sign_idx + 1:j - 1])
+    oper = complex(first_num, sec_num)
     return oper
 
 
@@ -46,3 +54,6 @@ def make_operation(x: complex, y: complex, sign: str) -> str:
         case '/':
             res = str(x / y)
     return res.replace('(', '').replace(')', '')
+
+
+print(parse_c_str('-24+31j - 6+3j'))  # debug
